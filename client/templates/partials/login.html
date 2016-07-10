@@ -1,0 +1,19 @@
+<link href="../static/css/pages/login.css" rel="stylesheet">
+
+<div class="container">
+    <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+    <div class="card card-container">
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>
+        <p id="profile-name" class="profile-name-card"></p>
+        <form class="form-signin" ng-submit="login()">
+            <span id="reauth-email" class="reauth-email"></span>
+            <input type="email" id="inputEmail" class="form-control" name="username" ng-model="loginForm.username"
+                   placeholder="Email address" required autofocus>
+            <input type="password" id="inputPassword" class="form-control" name="password" ng-model="loginForm.password"
+                   placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" ng-disabled="disabled">Sign in
+            </button>
+        </form>
+    </div>
+</div>
+<script src="../static/js/pages/login.js"></script>

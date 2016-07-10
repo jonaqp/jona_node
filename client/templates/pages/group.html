@@ -1,0 +1,72 @@
+<div ng-include src="'../templates/include/menu.html'"></div>
+<style>
+    .main-center {
+        margin-top: 30px;
+        margin: 0 auto;
+        max-width: 330px;
+        padding: 40px 40px;
+
+    }
+</style>
+<h1>GROUP</h1>
+
+
+<div class="container" ng-controller="GroupController">
+    <div class="col-md-6">
+        <h4>Register Group</h4>
+        <div class="col-md-12">
+            <div class="main-login">
+                <form class="form-horizontal" method="post" action="#">
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Group Name</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name"
+                                       placeholder="Enter your Name"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-7">
+                                <button type="button" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-primary">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="alert alert-{{msg.level_tag}}"><strong>{{msg.message}}</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>List Group</h4><br>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <th> # </th>
+                <th> Name </th>
+                <th> Status </th>
+                <th> Creation Date </th>
+                <th> Modified Date </th>
+                <th> Action </th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>0.- </strong></td>
+                    <td> {{ group.group.name }} </td>
+                    <td> {{ group.current_status }} </td>
+                    <td> {{ group.date_created }} </td>
+                    <td> {{ group.date_modified }} </td>
+                    <td> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
