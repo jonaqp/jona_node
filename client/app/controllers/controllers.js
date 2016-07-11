@@ -72,4 +72,4 @@ angular.module('myApp').controller('registerController',
 
     };
 
-}]);
+  }]);
