@@ -1,10 +1,11 @@
-angular.module('myApp').controller('ViewerController',
-    ['$scope', '$http',
-        function ($scope, $http) {
+angular.module('myApp', ['ngRoute', 'leaflet-directive']).controller('ViewerController',
+    ['$scope', '$http', 'leafletData',
+        function ($scope, $http, leafletData) {
 
             var refresh = function () {
                 $http.get('/api/boat')
                     .success(function (data) {
+                        console.log("boar", data);
                         $scope.boats = data;
                     })
                     .error(function (data) {
@@ -65,5 +66,21 @@ angular.module('myApp').controller('ViewerController',
             // };
 
 
+            // var test = function () {
+            //     var url = 'http://s3-us-west-2.amazonaws.com/jonap/74da382aeca7_2015-08-10.json?callback=JSON_CALLBACK';
+            //     $http.get(url).
+            //         success(function(data, status, headers, config) {
+            //           $scope.posts = data;
+            //             var plArray = [];
+            //             for (var i = 0; i < data.length; i++) {
+            //                 // console.log(data[i].longitude, data[i].latitude);
+            //                 plArray.push(L.polyline([data[i].longitude, data[i].latitude]).addTo(map));
+            //             }
+            //         }).
+            //         error(function(data, status, headers, config) {
+            //           // log error
+            //         });
+            //
+            // };
+            // test()
         }]);
-

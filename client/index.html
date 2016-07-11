@@ -7,6 +7,8 @@
   <!-- styles -->
   <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/yeti/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+  <link href="static/css/pages/maps/shellcatch_maps.css" rel="stylesheet">
 </head>
 
   <div class="container">
@@ -14,12 +16,26 @@
   </div>
 
   <!-- scripts -->
+
+  <link data-require="leaflet@*" data-semver="0.7.3" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+  <script data-require="leaflet@*" data-semver="0.7.3" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+
+
   <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+
+  <script src="//tombatossals.github.io/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+
   <script src="./main.js"></script>
   <script src="./services.js"></script>
+
+  <script src="static/js/pages/maps/shellcatch_maps.js"></script>
+  <script src="static/js/pages/maps/plugins/leaflet.polylineDecorator.js"></script>
+  <script src="static/js/pages/maps/function_maps.js"></script>
+
   <script src="app/controllers/controllers.js"></script>
   <script src="app/controllers/GroupControllers.js"></script>
   <script src="app/controllers/ViewerControllers.js"></script>

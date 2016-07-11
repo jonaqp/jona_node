@@ -79,8 +79,6 @@ myApp.controller('navbarController', ['$scope', '$location', 'AuthService',
         var data = {};
         var promise = AuthService.getcurrentUser();
         promise.then(function (response) {
-            console.log(response);
-            console.log(response.data);
             if (response.isloggedIn) {
                 $scope.isloggedIn = response.isloggedIn;
                 $scope.username = "Welcome " + response.data.username;
