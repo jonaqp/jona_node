@@ -1,3 +1,76 @@
-<div ng-include src="'../include/menu.html'"></div>
+<div data-ng-include src="'../templates/include/menu.html'"></div>
+
 
 <h1>CAMERA</h1>
+<div class="container" data-ng-controller="CameraController">
+    <div class="col-md-6">
+        <h4>Register Camera</h4>
+        <div class="col-md-12">
+            <div class="main-login">
+                <form class="form-horizontal" method="post" action="#">
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Mac Address</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" data-ng-model="camera.mac_address" class="form-control" name="mac_address" placeholder="Enter your  Mac Address"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Status</label>
+                        <div class="cols-sm-10">
+                            <select id="status" name="status" class="form-control" data-ng-model="camera.status">
+                                <option value="">--choice--</option>
+                                <option data-ng-repeat="option in options_status" value="{{option.name}}"  data-ng-selected="option.name == params.value">{{option.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div data-ng-if="render1" class="col-md-offset-5 col-md-7">
+                                <button type="button" class="btn btn-primary" data-ng-click="addCamera()">Submit</button>
+                                <button type="button" class="btn btn-primary" data-ng-click="deselect()">Cancel</button>
+
+                            </div>
+                            <div data-ng-if="render2" class="col-md-offset-5 col-md-7">
+                                <button type="button" class="btn btn-primary" data-ng-click="update()">Update</button>
+                                <button type="button" class="btn btn-primary" data-ng-click="exit()">Exit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>List Camera</h4><br>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <th> # </th>
+                <th> Camera </th>
+                <th> Status </th>
+                <th> Creation Date </th>
+                <th> Modified Date </th>
+                <th> Action </th>
+            </thead>
+            <tbody>
+                <tr  data-ng-repeat="camera in cameralist">
+                    <td><strodata-ng>0.- </strodata-ng></td>
+                    <td> {{ camera.mac_address }} </td>
+                    <td> {{ camera.status }} </td>
+                    <td> {{ camera.created_at }} </td>
+                    <td> {{ camera.modified_at }} </td>
+                    <td>
+                        <a class="btn btn-default"  data-ng-click="edit(camera._id)"><em class="fa fa-pencil"></em></a>
+                        <a class="btn btn-default"  data-ng-click="remove(camera._id)"><em class="fa fa-trash"></em></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+

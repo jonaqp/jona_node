@@ -7,6 +7,8 @@
 <div class="container" data-ng-controller="ViewerController">
     <div class="row">
         <div class="col-md-6">
+            <label for="" class="control-label">Boat</label>
+            <br>
             <select id="id_mac" name="id_mac" class="form-control" data-ng-change="BoatChange(boat.mac_address)" data-ng-model="boat.mac_address">
                 <option value="">--choice--</option>
                 <option data-ng-repeat="boat in boats" value="{{boat.mac_address}}" >{{boat.mac_address}}</option>
@@ -15,6 +17,8 @@
         </div>
 
         <div class="col-md-6">
+            <label for="" class="control-label">Trip</label>
+            <br>
             <select id="id_trip" name="id_trip" class="form-control" data-ng-change="TripChange(trip.date)" data-ng-model="trip.date">
                 <option value="">--choice--</option>
                 <option data-ng-repeat="trip in trips" value="{{trip.date}}">{{trip.date}}</option>
@@ -24,10 +28,12 @@
 
     </div>
     <div class="row">
-        <div id="mapid" style='height: 300px;'>
+        <br>
+        <div class="col-md-12">
+            <div id="mapid" style='height: 300px;'>
 
+            </div>
         </div>
-
     </div>
 
 

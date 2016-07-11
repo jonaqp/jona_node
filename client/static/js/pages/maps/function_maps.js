@@ -39,40 +39,11 @@ $(document).ready(function () {
     map = this.map;
 
 
-    var url_json = "http://shellcatch.s3.amazonaws.com/media/uploads/container/74da386ba564_2016-05-19/74da386ba564_2016-05-19.json";
-    //     [[47.5468, -0.7910], [48.8068, -0.1318], [49.1242, 1.6699], [49.4966, 3.2958], [51.4266, 2.8564], [51.7542, 2.1093]],
-    //     [[48.0193, -2.8125], [46.3165, -2.8564], [44.9336, -1.0107], [44.5278, 1.5820], [44.8714, 3.7353], [45.8287, 5.1855], [48.1953, 5.1416]],
-    //     [[45.9205, 0.4394], [46.7699, 0.9228], [47.6061, 2.5488], [47.7540, 3.3837]]
-    // ];
-    var url_json = "74da382aeca7_2015-08-10.json";
-    $.ajax(
-    {
-     xhrFields: {
-        withCredentials: true
-     },
-     url:url_json,
-     crossDomain: true,
-     dataType:"jsonp",
-     contentType: "application/json",
-     headers: {
-         "Access-Control-Allow-Origin": "*",
-         "Access-Control-Request-Headers": "Origin, Accept, Content-Type",
-         "Access-Control-Request-Method": "GET",
-         "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "access-control-allow-headers": "content-type, accept",
-        "access-control-max-age": 10, // Seconds.
-        "content-length": 0
-     },
-     success:function(data)
-     {
-        alert("Data from Server"+JSON.stringify(data));
-     },
-     error:function(jqXHR,textStatus,errorThrown)
-     {
-        alert("You can not send Cross Domain AJAX requests : "+errorThrown);
-     }
-    });
-
+    var url_json = [
+        [[47.5468, -0.7910], [48.8068, -0.1318], [49.1242, 1.6699], [49.4966, 3.2958], [51.4266, 2.8564], [51.7542, 2.1093]],
+        [[48.0193, -2.8125], [46.3165, -2.8564], [44.9336, -1.0107], [44.5278, 1.5820], [44.8714, 3.7353], [45.8287, 5.1855], [48.1953, 5.1416]],
+        [[45.9205, 0.4394], [46.7699, 0.9228], [47.6061, 2.5488], [47.7540, 3.3837]]
+    ];
 
 
     var plArray = [];

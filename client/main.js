@@ -22,10 +22,12 @@ myApp.config(function ($routeProvider) {
         })
         .when('/viewer', {
             templateUrl: 'templates/pages/viewer.html',
+            controller: 'ViewerController',
             access: {restricted: true}
         })
         .when('/camera', {
             templateUrl: 'templates/pages/camera.html',
+            controller: 'CameraController',
             access: {restricted: true}
         })
         .when('/group', {

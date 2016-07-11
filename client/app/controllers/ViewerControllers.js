@@ -54,15 +54,15 @@ angular.module('myApp').controller('ViewerController',
                     });
             };
 
-            var LoadPointFile = function ($scope, $http, mac_address, trip_date) {
-                $http.get('/api/trip/' + mac_address + '/' + trip_date + '/json')
-                    .success(function (data) {
-                        $scope.json_file = data;
-                    })
-                    .error(function (data) {
-                        console.log('Error: ' + data);
-                    });
-            };
+            // var LoadPointFile = function ($scope, $http, mac_address, trip_date) {
+            //     $http.get('/api/trip/' + mac_address + '/' + trip_date + '/json')
+            //         .success(function (data) {
+            //             $scope.json_file = data;
+            //         })
+            //         .error(function (data) {
+            //             console.log('Error: ' + data);
+            //         });
+            // };
 
 
         }]);

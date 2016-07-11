@@ -21,7 +21,7 @@ var User = require('./models/customer_models').user;
 // require routes
 var routes = require('./routes/api.js');
 var api_core = require('./routes/api_core');
-
+var api_container = require('./routes/api_container');
 
 // create instance of express
 var app = express();
@@ -53,6 +53,7 @@ passport.deserializeUser(User.deserializeUser());
 // routes
 app.use('/user/', routes);
 app.use('/api', api_core);
+app.use('/api', api_container);
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
