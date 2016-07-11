@@ -4,7 +4,30 @@
 
 <h1>VIEWER</h1>
 
+<div class="container" data-ng-controller="ViewerController">
 
+    <div class="row">
+        <div class="col-md-6">
+            <select id="id_boat" name="status" class="form-control" data-ng-model="group.status">
+                <option value="">--choice--</option>
+                <option data-ng-repeat="option in options_status" value="{{option.name}}"  data-ng-selected="option.name == params.value">{{option.name}}</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <select id="id_trip" name="status" class="form-control" data-ng-model="group.status">
+                <option value="">--choice--</option>
+                <option data-ng-repeat="option in options_status" value="{{option.name}}"  data-ng-selected="option.name == params.value">{{option.name}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="row">
+
+    </div>
+
+
+</div>
 
 
 <script src="../static/js/pages/maps/shellcatch_maps.js"></script>
