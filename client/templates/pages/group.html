@@ -1,17 +1,7 @@
-<div ng-include src="'../templates/include/menu.html'"></div>
-<style>
-    .main-center {
-        margin-top: 30px;
-        margin: 0 auto;
-        max-width: 330px;
-        padding: 40px 40px;
+<div data-ng-include src="'../templates/include/menu.html'"></div>
 
-    }
-</style>
 <h1>GROUP</h1>
-
-
-<div class="container" ng-controller="GroupController">
+<div class="container" data-ng-controller="GroupController">
     <div class="col-md-6">
         <h4>Register Group</h4>
         <div class="col-md-12">
@@ -22,24 +12,34 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" id="name"
-                                       placeholder="Enter your Name"/>
+                                <input type="text" data-ng-model="group.name" class="form-control" name="name" id="name" placeholder="Enter your Name"/>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Status</label>
+                        <div class="cols-sm-10">
+                            <select id="status" name="status" class="form-control" data-ng-model="group.status">
+                                <option value="">--choice--</option>
+                                <option data-ng-repeat="option in options_status" value="{{option.name}}"  data-ng-selected="option.name == params.value">{{option.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="row">
-                            <div class="col-md-offset-5 col-md-7">
-                                <button type="button" class="btn btn-primary">Submit</button>
-                                <button type="button" class="btn btn-primary">Cancel</button>
+                            <div data-ng-if="render1" class="col-md-offset-5 col-md-7">
+                                <button type="button" class="btn btn-primary" data-ng-click="addGroup()">Submit</button>
+                                <button type="button" class="btn btn-primary" data-ng-click="deselect()">Cancel</button>
+
+                            </div>
+                            <div data-ng-if="render2" class="col-md-offset-5 col-md-7">
+                                <button type="button" class="btn btn-primary" data-ng-click="update()">Update</button>
+                                <button type="button" class="btn btn-primary" data-ng-click="exit()">Exit</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="alert alert-{{msg.level_tag}}"><strong>{{msg.message}}</div>
         </div>
     </div>
     <div class="col-md-6">
@@ -54,13 +54,16 @@
                 <th> Action </th>
             </thead>
             <tbody>
-                <tr>
-                    <td><strong>0.- </strong></td>
-                    <td> {{ group.group.name }} </td>
-                    <td> {{ group.current_status }} </td>
-                    <td> {{ group.date_created }} </td>
-                    <td> {{ group.date_modified }} </td>
-                    <td> </td>
+                <tr  data-ng-repeat="group in grouplist">
+                    <td><strodata-ng>0.- </strodata-ng></td>
+                    <td> {{ group.name }} </td>
+                    <td> {{ group.status }} </td>
+                    <td> {{ group.created_at }} </td>
+                    <td> {{ group.modified_at }} </td>
+                    <td>
+                        <a class="btn btn-default"  data-ng-click="edit(group._id)"><em class="fa fa-pencil"></em></a>
+                        <a class="btn btn-default"  data-ng-click="remove(group._id)"><em class="fa fa-trash"></em></a>
+                    </td>
                 </tr>
             </tbody>
         </table>

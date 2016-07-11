@@ -1,24 +1,22 @@
 var mongoose = require('./db');
-var restful = require('node-restful');
 var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
 var GroupSchema = new Schema({
     name: String,
     status: Boolean,
-    created: {
-        type: Date,
-        default: Date.now()
-    },
-    modified: {
-        type: Date
-    }
+    created_at: Date,
+    modified_at: Date
 });
 var group = mongoose.model('core_group', GroupSchema);
-var api_group = restful.model('core_group', GroupSchema);
 module.exports.group = group;
-module.exports.api_group = api_group;
-
+GroupSchema.pre('save', function(next) {
+  var currentDate = new Date();
+  this.created_at = currentDate;
+  if (!this.modified_at)
+    this.modified_at = currentDate;
+  next();
+});
 
 var BucketSchema = new Schema({
     bucket_name: String,
@@ -34,9 +32,8 @@ var BucketSchema = new Schema({
     }
 });
 var bucket = mongoose.model('core_bucket', BucketSchema);
-var api_bucket = restful.model('core_bucket', BucketSchema);
 module.exports.bucket = bucket;
-module.exports.api_bucket = api_bucket;
+
 
 var ZoneSchema = new Schema({
     name: String,
@@ -49,9 +46,8 @@ var ZoneSchema = new Schema({
     }
 });
 var zone = mongoose.model('core_zone', ZoneSchema);
-var api_zone = restful.model('core_zone', ZoneSchema);
 module.exports.zone = zone;
-module.exports.api_zone = api_zone;
+
 
 var CountrySchema = new Schema({
     zone: {type: ObjectId, ref: 'ZoneSchema'},
@@ -68,9 +64,8 @@ var CountrySchema = new Schema({
     }
 });
 var country = mongoose.model('core_country', CountrySchema);
-var api_country = restful.model('core_country', CountrySchema);
 module.exports.country = country;
-module.exports.api_country = api_country;
+
 
 var StateSchema = new Schema({
     zone: {type: ObjectId, ref: 'ZoneSchema'},
@@ -85,9 +80,8 @@ var StateSchema = new Schema({
     }
 });
 var state = mongoose.model('core_state', StateSchema);
-var api_state = restful.model('core_state', StateSchema);
 module.exports.state = state;
-module.exports.api_state = api_state;
+
 
 var PortSchema = new Schema({
     name: String,
@@ -100,9 +94,8 @@ var PortSchema = new Schema({
     }
 });
 var port = mongoose.model('core_port', PortSchema);
-var api_port = restful.model('core_port', PortSchema);
 module.exports.port = port;
-module.exports.api_port = api_port;
+
 
 var CompanySchema = new Schema({
     name: String,
@@ -118,8 +111,7 @@ var CompanySchema = new Schema({
     }
 });
 var company = mongoose.model('core_company', CompanySchema);
-var api_company = restful.model('core_company', CompanySchema);
 module.exports.company = company;
-module.exports.api_company = api_company;
+
 
 
