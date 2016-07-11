@@ -62,5 +62,14 @@ router.get('/status', function(req, res) {
   });
 });
 
+router.get('/current_user', function (req, res) {
+    if (req.user) {
+        User.findById(req.user.id, function (err, user) {
+            if (err)
+                console.log(err);
+            res.status(200).send(user);
+        })
+    }
+});
 
 module.exports = router;
