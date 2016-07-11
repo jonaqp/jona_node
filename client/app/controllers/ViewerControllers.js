@@ -1,6 +1,6 @@
-angular.module('myApp', ['ngRoute', 'leaflet-directive']).controller('ViewerController',
-    ['$scope', '$http', 'leafletData',
-        function ($scope, $http, leafletData) {
+angular.module('myApp').controller('ViewerController',
+    ['$scope', '$http', 'leaflet',
+        function ($scope, $http, leaflet) {
 
             var refresh = function () {
                 $http.get('/api/boat')
@@ -55,6 +55,43 @@ angular.module('myApp', ['ngRoute', 'leaflet-directive']).controller('ViewerCont
                     });
             };
 
+            leaflet.map.then(function (map) {
+                var mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
+                var grayscale = L.tileLayer(mbUrl, {id: 'mapbox.light'}),
+                    streets = L.tileLayer(mbUrl, {id: 'mapbox.streets'});
+                var layer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png', {
+                    maxZoom: 15,
+                    layers: [grayscale],
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+                }).addTo(map);
+                var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+                    maxZoom: 15,
+                    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+                });
+                var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+                    maxZoom: 15,
+                    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+                });
+                var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+                    maxZoom: 15,
+                    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+                });
+                var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+                    maxZoom: 15,
+                    subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+                });
+                var baseLayers = {
+                    "Grayscale": grayscale,
+                    "Streets": streets,
+                    "G. Streets": googleStreets,
+                    "G. Hybrid": googleHybrid,
+                    "G. Satelital": googleSat,
+                    "G. Terrain": googleTerrain
+                };
+                map.setView([0, 0], 1);
+                L.control.layers(baseLayers).addTo(map);
+
+            });
             // var LoadPointFile = function ($scope, $http, mac_address, trip_date) {
             //     $http.get('/api/trip/' + mac_address + '/' + trip_date + '/json')
             //         .success(function (data) {
@@ -84,3 +121,4 @@ angular.module('myApp', ['ngRoute', 'leaflet-directive']).controller('ViewerCont
             // };
             // test()
         }]);
+

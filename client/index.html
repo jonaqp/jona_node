@@ -16,31 +16,26 @@
   </div>
 
   <!-- scripts -->
-
-  <link data-require="leaflet@*" data-semver="0.7.3" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
-  <script data-require="leaflet@*" data-semver="0.7.3" src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
-
-
-
-  <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
-
-  <script src="//tombatossals.github.io/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+  <script src="components/jquery/dist/jquery.min.js"></script>
+  <script src="components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="components/angular/angular.min.js"></script>
+  <script src="components/angular-route/angular-route.min.js"></script>
+  <script src="static/js/pages/maps/shellcatch_maps.js"></script>
+  <script src='http://maps.google.com/maps/api/js?v=3.2&sensor=false'></script>
+  <script src='http://gist.githubusercontent.com/raw/4504864/c9ef880071f959398b7cf0b687d4f37c352ea86d/leaflet-google.js'></script>
+ <script src="static/js/pages/maps/plugins/leaflet.polylineDecorator.js"></script>
 
   <script src="./main.js"></script>
   <script src="./services.js"></script>
 
-  <script src="static/js/pages/maps/shellcatch_maps.js"></script>
-  <script src="static/js/pages/maps/plugins/leaflet.polylineDecorator.js"></script>
-  <script src="static/js/pages/maps/function_maps.js"></script>
 
   <script src="app/controllers/controllers.js"></script>
   <script src="app/controllers/GroupControllers.js"></script>
   <script src="app/controllers/ViewerControllers.js"></script>
   <script src="app/controllers/CameraControllers.js"></script>
 
+  <script src="app/directives/MapDirectives.js"></script>
+  <script src="app/services/MapServices.js"></script>
 
 </body>
 </html>

@@ -17,7 +17,8 @@
     "jquery": "*",
     "angular-route": "*",
     "leaflet": "*",
-    "bootstrap": "*"
+    "bootstrap": "*",
+    "angular-leaflet-directive": "*"
   },
   "ignore": [
     "**/.*",
