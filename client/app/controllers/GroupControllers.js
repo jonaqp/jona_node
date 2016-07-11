@@ -1,6 +1,10 @@
 angular.module('myApp').controller('GroupController',
-    ['$scope', '$http',
-        function ($scope, $http) {
+    ['$scope', '$http', 'AuthService',
+        function ($scope, $http, AuthService) {
+            var vm = this;
+            vm.isLoggedIn = AuthService.isLoggedIn();
+            // vm.currentUser = AuthService.currentUser();
+            console.log(vm.isLoggedIn);
 
             $scope.options_status = [{ name: "enabled", id: 1 }, { name: "disabled", id: 2 }];
             $scope.params = {};
