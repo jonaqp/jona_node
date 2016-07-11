@@ -1,28 +1,32 @@
 <link href="../static/css/pages/maps/shellcatch_maps.css" rel="stylesheet">
 
-<div ng-include src="'../include/menu.html'"></div>
+<div data-ng-include src="'../templates/include/menu.html'"></div>
 
 <h1>VIEWER</h1>
 
 <div class="container" data-ng-controller="ViewerController">
-
     <div class="row">
         <div class="col-md-6">
-            <select id="id_boat" name="status" class="form-control" data-ng-model="group.status">
+            <select id="id_mac" name="id_mac" class="form-control" data-ng-change="BoatChange(boat.mac_address)" data-ng-model="boat.mac_address">
                 <option value="">--choice--</option>
-                <option data-ng-repeat="option in options_status" value="{{option.name}}"  data-ng-selected="option.name == params.value">{{option.name}}</option>
+                <option data-ng-repeat="boat in boats" value="{{boat.mac_address}}" >{{boat.mac_address}}</option>
             </select>
+            <div id="alert-boat" class="alert alert-warning" role='alert' style='display:none'></div>
         </div>
 
         <div class="col-md-6">
-            <select id="id_trip" name="status" class="form-control" data-ng-model="group.status">
+            <select id="id_trip" name="id_trip" class="form-control" data-ng-change="TripChange(trip.date)" data-ng-model="trip.date">
                 <option value="">--choice--</option>
-                <option data-ng-repeat="option in options_status" value="{{option.name}}"  data-ng-selected="option.name == params.value">{{option.name}}</option>
+                <option data-ng-repeat="trip in trips" value="{{trip.date}}">{{trip.date}}</option>
             </select>
         </div>
+        <div id="alert-trip" class="alert alert-warning" role='alert' style='display:none'></div>
 
     </div>
     <div class="row">
+        <div id="mapid" style='height: 300px;'>
+
+        </div>
 
     </div>
 

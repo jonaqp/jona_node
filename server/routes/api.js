@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var flash = require('connect-flash');
 
 var User = require('../models/customer_models').user;
 
@@ -46,9 +47,7 @@ router.post('/login', function(req, res, next) {
 
 router.get('/logout', function(req, res) {
   req.logout();
-  res.status(200).json({
-    status: 'Bye!'
-  });
+  res.redirect('/#/login');
 });
 
 router.get('/status', function(req, res) {
@@ -63,12 +62,12 @@ router.get('/status', function(req, res) {
 });
 
 router.get('/current_user', function (req, res) {
-    if (req.user) {
-        User.findById(req.user.id, function (err, user) {
-            if (err)
-                console.log(err);
-            res.status(200).send(user);
-        })
+    if (req.isAuthenticated()) {
+        res.status(200).json(req.user);
+    }
+    else {
+        console.log("Doesnt exist req.user");
+        res.status(500).json({err: "User not Logged In!,Please Login"});
     }
 });
 

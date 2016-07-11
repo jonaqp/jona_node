@@ -77,8 +77,7 @@ angular.module('myApp').controller('registerController',
 myApp.controller('navbarController', ['$scope', '$location', 'AuthService',
     function ($scope, $location, AuthService) {
         var data = {};
-        var promise = AuthService.getUserStatus();
-
+        var promise = AuthService.getcurrentUser();
         promise.then(function (response) {
             console.log(response);
             console.log(response.data);

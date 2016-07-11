@@ -8,6 +8,7 @@ angular.module('myApp').factory('AuthService',
 
             return ({
                 isLoggedIn: isLoggedIn,
+                getcurrentUser: getcurrentUser,
                 getUserStatus: getUserStatus,
                 login: login,
                 logout: logout,
@@ -66,11 +67,11 @@ angular.module('myApp').factory('AuthService',
                 $http.get('/user/logout')
                     .success(function (data) {
                         user = false;
-                        deferred.resolve();
+                        deferred.resolve(user);
                     })
                     .error(function (data) {
                         user = false;
-                        deferred.reject();
+                        deferred.reject(user);
                     });
                 return deferred.promise;
 
@@ -89,10 +90,26 @@ angular.module('myApp').factory('AuthService',
                         }
                     })
                     .error(function (data) {
-                        deferred.reject();
+                        deferred.reject(data);
                     });
                 return deferred.promise;
 
+            }
+
+            function getcurrentUser() {
+                var deferred = $q.defer();
+                $http.get('user/current_user')
+                    .success(function (data) {
+                        user = {"isloggedIn": true, "data": data};
+                        deferred.resolve(user);
+                    })
+                    .error(function (data) {
+                        user = {"isloggedIn": false, "data": data.err}
+                        deferred.reject(user);
+
+                    });
+
+                return deferred.promise;
             }
 
         }]);
