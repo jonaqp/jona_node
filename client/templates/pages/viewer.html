@@ -1,7 +1,5 @@
-<link href="../static/css/pages/maps/shellcatch_maps.css" rel="stylesheet">
-
 <div data-ng-include src="'../templates/include/menu.html'"></div>
-
+<script src="../../app/directives/VideoDirectives.js"></script>
 <h1>VIEWER</h1>
 
 <div class="container" data-ng-controller="ViewerController">
@@ -33,8 +31,30 @@
             <leaflet style='height: 300px;'></leaflet>
         </div>
     </div>
+    <div class="row">
+        <br>
+        <div class="col-md-12">
+            <div class="col-md-offset-3 col-md-7">
+                <div id="myElement"></div>
 
+            </div>
 
+            <script>
+                jwplayer("myElement").setup({
+                  playlist: [{
+                    sources: [{
+                      file: "https://s3-us-west-1.amazonaws.com/mystreamingbucket/74da382aeca7_2015-08-10/74da382aeca7_2015-08-10.mp4"
+                    }]
+                  }],
+                  width: 480,
+                  height: 300
+                });
+            </script>
+
+        </div>
+
+    </div>
+    <br><br><br>
 </div>
 
 

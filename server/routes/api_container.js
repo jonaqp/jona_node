@@ -37,6 +37,13 @@ router.get('/trip/:mac_address/:trip_date/json', function (req, res) {
     });
 });
 
+router.get('/trip/:mac_address/:trip_date/video', function (req, res) {
+    var mac_address = req.params.mac_address;
+    var trip_date = req.params.trip_date;
+    Container.trip.find({date: trip_date, mac_address: mac_address}, {"_id":0, "video_filepath":1}, function (e, docs) {
+        res.json(docs);
+    });
+});
 
 
 

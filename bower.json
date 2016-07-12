@@ -2,9 +2,9 @@
   "name": "Shellcatch Node bower",
   "version": "0.1.0",
   "homepage": "",
-  "repository":{
-        "type":"git",
-       "url":"https://jonaqp@bitbucket.org/jonaqp/shellcatch-node2"
+  "repository": {
+    "type": "git",
+    "url": "https://jonaqp@bitbucket.org/jonaqp/shellcatch-node2"
   },
   "authors": [
     "Jonathan Quiza <jony327@gmail.com>"
@@ -18,7 +18,7 @@
     "angular-route": "*",
     "leaflet": "*",
     "bootstrap": "*",
-    "angular-leaflet-directive": "*"
+    "ng-jwplayer": "^0.2.1"
   },
   "ignore": [
     "**/.*",
